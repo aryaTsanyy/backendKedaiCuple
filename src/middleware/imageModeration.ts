@@ -4,9 +4,11 @@ import axios from "axios";
 import { promises } from "dns";
 import { Request, Response, NextFunction, RequestHandler } from "express";
 import FormData from "form-data";
+import dotenv from "dotenv";
+dotenv.config();
 
-const sightengineUser = "1386320646";
-const sightengineSecret = "6jBR9CXH7zyV7xU9egjvDk9fqnkdFFug";
+const sightengineUser = process.env.SIGHTENGINE_USER || "sightengine_user";
+const sightengineSecret = process.env.SIGHTENGINE_SECRET;
 
 export const moderateImage: RequestHandler = async (req, res, next): Promise<any> => {
   try {
